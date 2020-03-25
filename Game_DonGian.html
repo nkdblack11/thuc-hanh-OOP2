@@ -40,16 +40,18 @@
     function start(){
         let chieuRongManHinh = window.innerWidth - hero.size
         let chieuCaoManHinh = window.innerHeight - hero.size
-        if(hero.left < chieuRongManHinh && hero.top <= 30){
+        let x = hero.top;
+        let y = hero.left;
+        if(y < chieuRongManHinh && x <= 30){
             hero.moveRight();
         }
-        if (hero.left >= chieuRongManHinh && hero.top < chieuCaoManHinh){
+        if (y >= chieuRongManHinh && x < chieuCaoManHinh){
             hero.moveDown();
         }
-        if (hero.top >= chieuCaoManHinh && hero.left > 0){
+        if (x >= chieuCaoManHinh && y > 0){
             hero.moveLeft();
         }
-        if (hero.top > 0 && hero.left <= 20){
+        if (x > 0 && y <= 20){
             hero.moveUp();
         }
         document.getElementById('game').innerHTML = hero.getHeroElement();
