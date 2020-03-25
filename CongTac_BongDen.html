@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let SwitchButton = function (electricity) {
+        this.electricity = electricity
+
+        this.getElectricity = function () {
+            return this.electricity
+        };
+        this.switchOn = function () {
+            this.electricity = true
+        }
+        this.switchOff = function () {
+            this.electricity = false
+        }
+    };
+
+    let ElectricLamp = function () {
+
+        this.checkTheLight = function (SwitchButton) {
+            if (SwitchButton.getElectricity()){
+                alert('Đèn Sáng')
+            } else {
+                alert('Đèn Tắt')
+            }
+        }
+    }
+    let switch1 = new SwitchButton()
+    let lamp = new ElectricLamp(false)
+</script>
+</body>
+</html>
