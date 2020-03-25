@@ -7,49 +7,53 @@
 <body>
 <div id="game"></div>
 <script>
-    function Hero(image, top, left, size) {
+    function Hero(image, top, left, size){
         this.image = image;
         this.top = top;
         this.left = left;
         this.size = size;
 
-        this.getHeroElement = function () {
-            return '<img width="' + this.size + '"' +
-                ' height="' + this.size + '"' +
-                ' src="' + this.image + '"' +
-                ' style="top: ' + this.top + 'px; left:' + this.left + 'px;position:absolute;" />';
+        this.getHeroElement = function(){
+            return '<img width="'+ this.size + '"' +
+                ' height="'+ this.size + '"' +
+                ' src="' + this.image +'"' +
+                ' style="top: '+this.top+'px; left:'+this.left+'px;position:absolute;" />';
         }
 
-        this.moveRight = function () {
-            this.left += -20;
-            console.log('ok: ' + this.left);
+        this.moveRight = function(){
+            this.left += 5;
         }
         this.moveDown = function () {
-            this.left += 20;
-            console.log('ok: ' + this.left);
+            this.top += 5;
         }
         this.moveLeft = function () {
-            this.left += 20;
-            console.log('ok: ' + this.left);
+            this.left = this.left - 5
         }
         this.moveUp = function () {
-            this.left += 20;
-            console.log('ok: ' + this.left);
+            this.top = this.top - 5
         }
 
     }
 
-    let hero = new Hero('9mXStgc.gif', 10, 20, 200);
+    let hero = new Hero('9mXStgc.gif', 20, 30, 200);
 
-    function start() {
-        if (hero.left < window.innerWidth - hero.size) {
+    function start(){
+        let chieuRongManHinh = window.innerWidth - hero.size
+        let chieuCaoManHinh = window.innerHeight - hero.size
+        if(hero.left < chieuRongManHinh && hero.top <= 30){
             hero.moveRight();
+        }
+        if (hero.left >= chieuRongManHinh && hero.top < chieuCaoManHinh){
             hero.moveDown();
+        }
+        if (hero.top >= chieuCaoManHinh && hero.left > 0){
             hero.moveLeft();
+        }
+        if (hero.top > 0 && hero.left <= 20){
             hero.moveUp();
         }
         document.getElementById('game').innerHTML = hero.getHeroElement();
-        setTimeout(start, 600)
+        setTimeout(start, 10)
     }
 
     start();
