@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        let Mouse = function (name, mass, speed) {
+            this.name = name;
+            this.mass = mass;
+            this.speed = speed;
+            this.status = true;
+
+            this.checkStatus = function () {
+                return this.status;
+            }
+            this.died = function () {
+                this.status = false;
+            }
+            this.sounding = function () {
+                alert('Chít Chít');
+            }
+        };
+        let Cat = function (name, mass, speed) {
+            this.name = name;
+            this.mass = mass;
+            this.speed = speed;
+
+            this.sounding = function () {
+                alert('Meo Meo');
+            };
+
+            this.hunting = function (Mouse) {
+                if (this.speed > Mouse.speed) {
+                    alert(name + ' bắt được ' + Mouse.name);
+                    this.eatMouse(Mouse)
+                } else {
+                    alert(Mouse.name + ' chạy thoát')
+                }
+            };
+            this.eatMouse = function (Mouse) {
+                if (Mouse.checkStatus()){
+                    alert(name + ' ăn ' + Mouse.name)
+                    Mouse.died();
+                    this.mass += Mouse.mass;
+                } else {
+                    alert(Mouse.name + ' Chết ko ăn đc')
+                }
+            }
+        };
+
+        let chuot = new Mouse('reney', 10, 10)
+        let meo = new Cat('tom', 15, 15)
+    </script>
+</head>
+<body>
+
+</body>
+</html>
