@@ -7,14 +7,14 @@
 <body>
 <script>
     let Apple = function () {
-        this.mass = 0
+        this.mass = 10
 
         this.getMass = function () {
             return this.mass
         }
-        this.setMass = function (dv) {
-            this.mass = parseInt(dv);
-        }
+        // this.setMass = function (dv) {
+        //     this.mass = parseInt(dv);
+        // }
         this.minusMass = function () {
             this.mass--;
         }
@@ -35,7 +35,7 @@
                 this.weight ++;
                 apple.minusMass();
             } else {
-                alert('Táo Hết Hạn Sử Dụng')
+                alert('Hết táo')
             }
         }
     }
