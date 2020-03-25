@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mô phỏng sự hoạt động của đèn pin</title>
+</head>
+<body>
+<script>
+    let Flashlight = function (battery, flashLamp) {
+        this.battery = battery
+        this.flashLamp = flashLamp
+
+        this.setBattery = function (energy) {
+            this.battery = energy
+        }
+
+        this.checkBattery = function () {
+            if (this.battery > 0){
+                 return true;
+            } else {
+                return false;
+            }
+        }
+
+        this.turnOn = function () {
+            this.flashLamp = true;
+        };
+        this.turnOff = function () {
+            this.flashLamp = false;
+        }
+
+        this.light = function () {
+            if (this.flashLamp === true && this.checkBattery() === true){
+                alert('Lighting')
+            } else {
+                alert('Not lighting')
+            }
+        }
+    }
+</script>
+</body>
+</html>
