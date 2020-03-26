@@ -20,9 +20,9 @@
         }
     };
 
-    let ElectricLamp = function () {
+    let ElectricLamp = function (SwitchButton) {
 
-        this.checkTheLight = function (SwitchButton) {
+        this.checkTheLight = function () {
             if (SwitchButton.getElectricity()){
                 alert('Đèn Sáng')
             } else {
@@ -31,7 +31,7 @@
         }
     }
     let switch1 = new SwitchButton()
-    let lamp = new ElectricLamp(false)
+    let lamp = new ElectricLamp(switch1)
 </script>
 </body>
 </html>
