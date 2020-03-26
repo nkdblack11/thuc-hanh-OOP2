@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Remote để điều khiển Tivi</title>
+</head>
+<body>
+<script language="JavaScript">
+    let Remote = function (television, battery) {
+        this.battery = battery;
+        this.VTV = "";
+
+        this.getBattery = function () {
+            return this.battery;
+        }
+
+        this.turnOn = function () {
+            if (this.battery > 0) {
+                television.status = true
+            } else {
+                alert('Điều khiển hết pin')
+            }
+        }
+        this.turnOff = function () {
+            if (this.battery > 0) {
+                television.status = false
+            } else {
+                alert('Điều khiển hết pin')
+            }
+        }
+
+        this.control = function (channels) {
+            if (this.battery > 0) {
+                if (television.checkSatus()) {
+                    let check = false;
+                    for (let i = 0; i < television.menu.length; i++) {
+                        if (channels === television.menu[i]) {
+                            alert('Kênh vừa chuyển  ' + television.menu[i]);
+                            television.goingOn = channels;
+                            check = true;
+                            break;
+                        }
+                    }
+                    if (check === false) {
+                        alert('Kênh chưa đăng ký')
+                    }
+                } else {
+                    alert('Chưa bật tivi')
+                }
+            } else {
+                alert('Điều khiển hết pin')
+            }
+        }
+        this.volumeUp = function () {
+            television.volume += 2;
+        }
+
+    }
+
+    let Television = function (goingOn, volume, status,) {
+        this.goingOn = goingOn;
+        this.volume = volume;
+        this.status = status;
+        this.menu = ['VTV 1', 'VTV 2', 'VTV 3', 'VTV 4', 'VTV 5', 'VTV 6', 'VTV 7', 'HBO', 'AXN'];
+
+        this.checkSatus = function () {
+            return this.status
+        }
+
+        this.getGoingOn = function () {
+            if (this.status === true){
+                alert('Tivi đang chiếu kênh ' + this.goingOn)
+            } else {
+                alert('Tivi đang tắt')
+            }
+
+        }
+
+        this.setVolume = function () {
+            return this.volume
+
+        }
+    };
+    let tivi = new Television("VTV 7", 30, false)
+    let dk = new Remote(tivi, 100)
+</script>
+</body>
+</html>
